@@ -3,8 +3,7 @@ const bcrypt = require("bcryptjs");
 const tasksSchema=new mongoose.Schema({
     tag:{
         type:String,
-        default:"start",
-        enum:["Start","In progress","done"]
+       
     },
     description:{
         type:String,
@@ -15,6 +14,16 @@ const tasksSchema=new mongoose.Schema({
         type:String,
         default:"start",
         enum:["Start","In progress","done"]
+    }
+})
+const columnSchema=new mongoose.Schema({
+    col_name:{
+        type:String,
+        
+    },
+    tasks:{
+        type:[tasksSchema],
+        default:[]
     }
 })
 const userSchema=new mongoose({
@@ -35,8 +44,8 @@ const userSchema=new mongoose({
         require:"password required",
         type:String
     },
-    tasks:{
-        type:[tasksSchema],
+    column:{
+        type:[columnSchema],
     default:[]}
 })
 const User = mongoose.model("User", userSchema);

@@ -26,7 +26,7 @@ const columnSchema=new mongoose.Schema({
         default:[]
     }
 })
-const userSchema=new mongoose({
+const userSchema=new mongoose.Schema({
     firstName:{
         require:"firstname required",
         type:String

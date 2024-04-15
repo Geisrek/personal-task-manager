@@ -1,6 +1,5 @@
 const express =require("express");
+const userController=require("../controllers/user.controller")
 const router=express.Router();
 
-module.exports=router.get("/router",(req,res)=>{
-    res.status(200).json({"message":"Hello from router"})
-})
+module.exports=router.get("/router",userController)

@@ -1,9 +1,9 @@
-const userModel=require('../models/user.model')
+const {User}=require('../models/user.model')
 const addUser=async(req,res)=>{
     try{
      
      // const New_user=await userModel.create({firstName:"Rafik",lastName:"Hijazy",email:"Rafik@example.com",password:"Apocalypse55"});
-      const user=await userModel.findOne({firstName:"Rafik"});
+      const user=await User.findOne({email:req.email});
       if(user){
         return res.status(500).json({
             status:"failed",
@@ -12,7 +12,7 @@ const addUser=async(req,res)=>{
       
       }
       else{
-        user.create(req.body)
+        User.create(req.body)
         return res.status(201).json({
             status:"success",
             message:"user created successfully"

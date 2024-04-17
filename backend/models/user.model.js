@@ -49,5 +49,6 @@ const userSchema=new mongoose.Schema({
     default:[]}
 })
 const User = mongoose.model("User", userSchema);
-
-module.exports = User;
+const Column = mongoose.model("Column", columnSchema);
+const Task = mongoose.model("Task", tasksSchema);
+module.exports = {User,Column,Task};
